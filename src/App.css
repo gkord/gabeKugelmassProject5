@@ -1,14 +1,130 @@
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.App {
+    text-align: center;
+}
+
 p {
     white-space: pre-line;
 }
 
-h2 {
-    text-transform: capitalize;
+h1{
+    text-align: center;
 }
 
-.displayLyrics{
-    border: 1px solid crimson;
-    height: 100px;
-    width: 300px;
+h4 {
+    text-transform: capitalize;
+    margin: 0;
+}
+
+ul{
+    padding: 0;
+}
+
+li{
+    border: 1px solid dodgerblue;
+    height: 20px;
+    width: 100%;
     overflow: scroll;
+    margin: 10px 0px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.lyricBoxTop{
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    border: 0;
+    border-bottom: 1px solid black;
+    margin: 0 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.removeButton {
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+i{
+    font-size: 20px;
+}
+
+::placeholder {
+    font-style: italic;
+}
+
+.back-drop {
+    background-color: rgba(48, 49, 48, 0.42);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 1.3s;
+    
+}
+
+.modal-wrapper {
+    background: white;
+    border: 1px solid #d0cccc;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
+    margin: auto;
+    transition: all .8s;
+    width: 80%;
+}
+
+.modal-header {
+    background: #263238;
+    height: 40px;
+    line-height: 40px;
+    padding: 5px 20px;
+    text-align: right;
+}
+
+.modal-header h3 {
+    color: white;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-body {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+
+.close-modal-btn {
+    color: white;
+    cursor: pointer;
+    float: right;
+    font-size: 30px;
+    margin: 0;
+}
+
+.close-modal-btn:hover {
+    color: black;
+}
+
+.open-modal-btn {
+    margin: 15px;
+    padding: 10px;
+    font-weight: bold;
 }

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import MusicItem from './Components/MusicItem'
+import Search from './Components/Search'
+import Modal from './Components/Modal'
 import firebase from "./firebase";
 import "./App.css";
 
@@ -10,9 +13,10 @@ class App extends Component {
       lyrics: "",
       artistName: "",
       songTitle: "",
-      returnedLyrics:""
+      returnedLyrics: []
     };
   }
+
   //create a function where our API call lives
   getLyrics = () => {
     //Make API Call
@@ -23,32 +27,42 @@ class App extends Component {
       params: {
         format: "json"
       }
-    }).then(results => {
-      this.setState(
-        {
-          lyrics: results.data.lyrics
-        },
-        //pass an empty function, call our database and push items as an object
-        () => {
-          const dbRef = firebase.database().ref();
-          dbRef.push({
-            lyrics: this.state.lyrics,
-            artistName: this.state.artistName,
-            songTitle: this.state.songTitle
-          });
-        }
-      );
-    });
+    })
+      .then(results => {
+        this.setState(
+          {
+            lyrics: results.data.lyrics
+          },
+          //pass an empty function, call our database and push items as an object
+          () => {
+            const dbRef = firebase.database().ref();
+            dbRef.push({
+              lyrics: this.state.lyrics,
+              artistName: this.state.artistName,
+              songTitle: this.state.songTitle
+            });
+          }
+        );
+      })
+      .catch(error => {
+        alert(
+          "Hmm... no results. Lyrics either don't exist in our database or you spelled something wrong. Please try again!"
+        );
+      });
   };
 
   componentDidMount() {
     const dbRef = firebase.database().ref();
     dbRef.on("value", response => {
-      console.log(response.val());
       const newState = [];
       const data = response.val();
       for (let key in data) {
-        newState.push(data[key]);
+        newState.push({
+          key: key,
+          artistName: data[key].artistName,
+          songTitle: data[key].songTitle,
+          lyrics: data[key].lyrics
+        });
       }
       this.setState({
         returnedLyrics: newState
@@ -67,43 +81,73 @@ class App extends Component {
     event.preventDefault();
     this.getLyrics();
   };
+  //when user clicks remove button we remove that object from our page and firebase
+  removeSong = songId => {
+    const dbRef = firebase.database().ref();
+    dbRef.child(songId).remove();
+  };
+
+  // when user clicks the song box, lyrics show up below in a new div
+  songClick = () => {
+    alert('clicked')
+  }
+
+  openModalHandler = () => {
+    this.setState({
+      isShowing: true
+    });
+  };
+
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false
+    });
+  };
 
   render() {
     return (
       <div className="App">
-        <h1>Lyrics App</h1>
-        <form action="">
-          <input
-            onChange={this.handleChange}
-            type="text"
-            name="artistName"
-            id="artistName"
-            value={this.state.artistName}
-            placeholder="Enter Artist Name"
-          />
-          <input
-            onChange={this.handleChange}
-            type="text"
-            name="songTitle"
-            id="songTitle"
-            value={this.state.songTitle}
-            placeholder="Enter Song Title"
-          />
-          <button onClick={this.handleSubmit} type="submit">
-            Get Lyrics
-          </button>
-        </form>
-        <div className="displayLyrics">
-          <h2>{this.state.artistName}</h2>
-          <h2>{this.state.songTitle}</h2>
-          <p>{this.state.lyrics}</p>
+        <header>
+          <h1>Karaoke Companion</h1>
+        </header>
+        <Search
+          handleChange={this.handleChange}
+          artistName={this.state.artistName}
+          songTitle={this.state.songTitle}
+          handleSubmit={this.handleSubmit}
+        />
+        <div className="cardContainer">
+          <ul>
+            {this.state.returnedLyrics.map(songs => {
+              return (
+                <MusicItem
+                  songClick={this.songClick}
+                  artistName={songs.artistName}
+                  songTitle={songs.songTitle}
+                  lyrics={songs.lyrics}
+                  removeSong={this.removeSong}
+                  key={songs.key}
+                  songId={songs.key}
+                />
+              );
+            })}
+          </ul>
         </div>
-        {/* map through returned array and display the keys */}
-        <ul>
-          {this.state.returnedLyrics.map(songs => {
-            console.log(songs);
-          })}
-        </ul>
+        <div>
+          {this.state.isShowing ? (
+            <div onClick={this.closeModalHandler} className="back-drop"></div>
+          ) : null}
+
+          <button className="open-modal-btn" onClick={this.openModalHandler}>
+            Open Modal
+          </button>
+
+          <Modal
+            className="modal"
+            show={this.state.isShowing}
+            close={this.closeModalHandler}
+          />
+        </div>
       </div>
     );
   }
