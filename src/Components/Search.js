@@ -13,6 +13,7 @@ class Search extends Component {
             value={this.props.artistName}
             placeholder="Enter Artist Name"
           />
+          +
           <input
             onChange={this.props.handleChange}
             type="text"
@@ -26,7 +27,7 @@ class Search extends Component {
             onClick={this.props.handleSubmit}
             type="submit"
           >
-            Get Lyrics
+            Add Song
           </button>
         </form>
       </div>

@@ -223,6 +223,7 @@ h2 {
 h4 {
   text-transform: capitalize;
   margin: 0;
+  font-size: 18px;
 }
 
 form {
@@ -311,8 +312,6 @@ footer p {
   position: absolute;
   top: 0;
   left: 10%;
-  /* overflow: auto;
-  max-height: 1024px; */
 }
 
 .modal-header {
@@ -326,6 +325,12 @@ footer p {
 
 .modal-body {
   text-align: center;
+}
+
+.modal-body p {
+  font-size: 16px;
+  line-height: 27.6px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .openModalButton {
@@ -346,6 +351,13 @@ footer p {
 
 .close-modal-btn:hover {
   color: black;
+}
+
+@media (max-width:624px) {
+  .modal-wrapper {
+    width: 95%;
+    left: 2.5%;
+  }
 }
 
 @media (max-width:485px) {

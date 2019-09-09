@@ -12,7 +12,7 @@ const SongList = props => {
               className="openModalButton"
               onClick={() => props.openModal(props.lyrics)}
             >
-              View
+              Lyrics
             </button>
             <button
               className="removeButton"

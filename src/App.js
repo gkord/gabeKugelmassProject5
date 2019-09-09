@@ -115,7 +115,7 @@ class App extends Component {
           songTitle={this.state.songTitle}
           handleSubmit={this.handleSubmit}
         />
-        <div className="cardContainer">
+        <div className="cardContainer wrapper">
           <ul>
             {this.state.returnedLyrics.map((songs, i) => {
               return (
