@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Header from './Components/Header'
+import Header from "./Components/Header";
 import SongList from "./Components/SongList";
-import Search from './Components/Search'
+import Search from "./Components/Search";
 import Modal from "./Components/Modal";
-import Footer from './Components/Footer'
+import Footer from "./Components/Footer";
 import firebase from "./firebase";
 import "./App.css";
-
 
 class App extends Component {
   constructor() {
@@ -79,11 +78,21 @@ class App extends Component {
       [event.target.name]: event.target.value
     });
   };
+
+  //input validation function
+  inputValidate = () => {
+    if (this.state.artistName.length === 0 || this.state.songTitle.length === 0)
+      return true;
+  };
+
   //when user submits the form, we are calling the function that triggers our API call
   handleSubmit = event => {
     event.preventDefault();
-    this.getLyrics();
+    if (this.inputValidate() == true) {
+      alert("It appears you've submitted an empty field. Try again!");
+    } else this.getLyrics();
   };
+
   //when user clicks remove button we remove that object from our page and firebase
   removeSong = songId => {
     const dbRef = firebase.database().ref();
@@ -91,7 +100,8 @@ class App extends Component {
   };
 
   //opens our modal and passes our lyrics into it
-  openModalHandler = (lyrics ) => {
+  openModalHandler = lyrics => {
+    console.log(lyrics);
     this.setState({
       isShowing: true,
       lyrics
