@@ -14,7 +14,9 @@ class App extends Component {
     this.state = {
       lyrics: "",
       artistName: "",
+      artistDisplay: "",
       songTitle: "",
+      songDisplay: "",
       returnedLyrics: []
     };
   }
@@ -40,8 +42,8 @@ class App extends Component {
             const dbRef = firebase.database().ref();
             dbRef.push({
               lyrics: this.state.lyrics,
-              artistName: this.state.artistName,
-              songTitle: this.state.songTitle
+              artistDisplay: this.state.artistDisplay,
+              songDisplay: this.state.songDisplay
             });
           }
         );
@@ -62,7 +64,9 @@ class App extends Component {
         newState.push({
           key: key,
           artistName: data[key].artistName,
+          artistDisplay: data[key].artistDisplay,
           songTitle: data[key].songTitle,
+          songDisplay: data[key].songDisplay,
           lyrics: data[key].lyrics
         });
       }
@@ -72,11 +76,15 @@ class App extends Component {
     });
   }
 
-  //when user types in input box we are changing state
-  handleChange = event => {
+  handleSetName = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
+  };
+
+  //when user types in input box we are changing state
+  handleChange = event => {
+    this.handleSetName(event);
   };
 
   //input validation function
@@ -91,6 +99,12 @@ class App extends Component {
     if (this.inputValidate() == true) {
       alert("It appears you've submitted an empty field. Try again!");
     } else this.getLyrics();
+    this.setState({
+      artistDisplay: this.state.artistName,
+      songDisplay: this.state.songTitle,
+      artistName: "",
+      songTitle: ""
+    });
   };
 
   //when user clicks remove button we remove that object from our page and firebase
@@ -101,13 +115,13 @@ class App extends Component {
 
   //opens our modal and passes our lyrics into it
   openModalHandler = lyrics => {
-    console.log(lyrics);
     this.setState({
       isShowing: true,
       lyrics
     });
+    //make sure that no matter where user opens modal, it starts at the top of the page
+    window.scrollTo(0, 0);
   };
-
   //closes our modal
   closeModalHandler = () => {
     this.setState({
@@ -134,7 +148,9 @@ class App extends Component {
                   openModal={this.openModalHandler}
                   songClick={this.songClick}
                   artistName={songs.artistName}
+                  artistDisplay={songs.artistDisplay}
                   songTitle={songs.songTitle}
+                  songDisplay={songs.songDisplay}
                   lyrics={songs.lyrics}
                   removeSong={this.removeSong}
                   key={songs.key}

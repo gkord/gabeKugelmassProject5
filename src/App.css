@@ -218,6 +218,7 @@ h1 {
 h2 {
   margin-top: 0;
   text-align: center;
+  font-style: italic;
 }
 
 h4 {
@@ -230,6 +231,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 ul {
@@ -365,8 +367,12 @@ footer p {
     flex-direction: column;
   }
 
+  h2 {
+    font-size: 24px;
+  }
+
   input {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     width: 250px;
   }
 
