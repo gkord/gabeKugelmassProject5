@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
-import MusicItem from './Components/MusicItem'
+import Header from './Components/Header'
+import SongList from "./Components/SongList";
 import Search from './Components/Search'
-import Modal from './Components/Modal'
+import Modal from "./Components/Modal";
+import Footer from './Components/Footer'
 import firebase from "./firebase";
 import "./App.css";
+
 
 class App extends Component {
   constructor() {
@@ -87,17 +90,15 @@ class App extends Component {
     dbRef.child(songId).remove();
   };
 
-  // when user clicks the song box, lyrics show up below in a new div
-  songClick = () => {
-    alert('clicked')
-  }
-
-  openModalHandler = () => {
+  //opens our modal and passes our lyrics into it
+  openModalHandler = (lyrics ) => {
     this.setState({
-      isShowing: true
+      isShowing: true,
+      lyrics
     });
   };
 
+  //closes our modal
   closeModalHandler = () => {
     this.setState({
       isShowing: false
@@ -107,9 +108,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>Karaoke Companion</h1>
-        </header>
+        <Header />
         <Search
           handleChange={this.handleChange}
           artistName={this.state.artistName}
@@ -118,9 +117,11 @@ class App extends Component {
         />
         <div className="cardContainer">
           <ul>
-            {this.state.returnedLyrics.map(songs => {
+            {this.state.returnedLyrics.map((songs, i) => {
               return (
-                <MusicItem
+                <SongList
+                  index={i}
+                  openModal={this.openModalHandler}
                   songClick={this.songClick}
                   artistName={songs.artistName}
                   songTitle={songs.songTitle}
@@ -132,22 +133,16 @@ class App extends Component {
               );
             })}
           </ul>
+          {this.state.isShowing && (
+            <Modal
+              close={this.closeModalHandler}
+              lyrics={this.state.lyrics}
+              artistName={this.state.artistName}
+              songTitle={this.state.songTitle}
+            />
+          )}
         </div>
-        <div>
-          {this.state.isShowing ? (
-            <div onClick={this.closeModalHandler} className="back-drop"></div>
-          ) : null}
-
-          <button className="open-modal-btn" onClick={this.openModalHandler}>
-            Open Modal
-          </button>
-
-          <Modal
-            className="modal"
-            show={this.state.isShowing}
-            close={this.closeModalHandler}
-          />
-        </div>
+        <Footer />
       </div>
     );
   }
