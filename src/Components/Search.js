@@ -29,7 +29,6 @@ class Search extends Component {
             className="submitButton"
             id="submitButton"
             onClick={this.props.handleSubmit}
-            // disabled={this.props.artistName.length || this.props.songTitle.length == 0 ? "disabled": null}
             type="submit"
           >
             Add Song
