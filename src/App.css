@@ -185,11 +185,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url("./assets/74942.jpg");
-  background-color: #ABA094;
+  background: url("./assets/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .wrapper {
@@ -208,17 +208,20 @@ p {
 
 h1 {
   text-align: center;
-  font-family: "Charm", sans-serif;
-  font-size: 64px;
-  text-shadow: 2px 2px 5px #b7afa5;
+  font-family: "Courgette", sans-serif;
+  font-size: 48px;
+  text-shadow: 2px 2px 5px #F0FFF0;
   margin: 25px 0;
   line-height: 1;
+  text-transform: uppercase;
 }
 
 h2 {
   margin-top: 0;
   text-align: center;
   font-style: italic;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 28px;
 }
 
 h4 {
@@ -235,19 +238,18 @@ form {
 }
 
 ul {
-  padding: 0;
+  padding:20px 0px 0px 0px;
   list-style: none;
 }
 
 li {
-  border: 1px solid black;
   height: 100%;
   width: 100%;
   margin: 10px 0px;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 2px 2px 5px black;
-  background: #a4bfe1;
+  background: #F0FFF0;
 }
 
 .lyricBoxTop {
@@ -274,6 +276,12 @@ input {
   border: 0;
   background: none;
   cursor: pointer;
+  padding-right: 0;
+  transition: all .5s ease;
+}
+
+.removeButton:hover{
+  color: darkred;
 }
 
 .submitButton {
@@ -282,12 +290,12 @@ input {
   border: 1px solid black;
   box-shadow: 2px 2px 5px black;
   background: black;
-  color: #b7afa5;
+  color: #F0FFF0;
   transition: all 0.5s ease;
 }
 
 .submitButton:hover {
-  box-shadow: 0px 0px 10px 10px #b7afa5;
+  box-shadow: 0px 0px 10px 10px #F0FFF0;
 }
 
 i {
@@ -301,11 +309,12 @@ i {
 footer p {
   margin: 0;
   padding: 10px 0;
+  font-family: 'Courgette', sans-serif;
 }
 
 /* Modal Styles */
 
-.modal-wrapper {
+.modalWrapper {
   background: white;
   border: 1px solid #d0cccc;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
@@ -316,7 +325,7 @@ footer p {
   left: 10%;
 }
 
-.modal-header {
+.modalHeader {
   height: 40px;
   line-height: 40px;
   padding: 5px 20px;
@@ -325,25 +334,32 @@ footer p {
   justify-content: flex-end;
 }
 
-.modal-body {
+.modalBody {
   text-align: center;
 }
 
-.modal-body p {
+.modalBody p {
   font-size: 16px;
   line-height: 27.6px;
   font-family: 'Open Sans', sans-serif;
 }
 
 .openModalButton {
-  background: #b7afa5;
+  background: black ;
+  color:#F0FFF0;
   padding: 5px 10px;
   border-radius: 5px;
   font-family: sans-serif;
   font-style: bold;
+  border: none;
+  transition: all 0.5s ease;
 }
 
-.close-modal-btn {
+.openModalButton:hover {
+  box-shadow: 0px 0px 5px 5px darkred;
+}
+
+.closeModalButton {
   color: black;
   cursor: pointer;
   font-size: 30px;
@@ -351,12 +367,8 @@ footer p {
   position: fixed;
 }
 
-.close-modal-btn:hover {
-  color: black;
-}
-
 @media (max-width:624px) {
-  .modal-wrapper {
+  .modalWrapper {
     width: 95%;
     left: 2.5%;
   }

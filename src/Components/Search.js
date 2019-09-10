@@ -5,6 +5,7 @@ class Search extends Component {
     return (
       <div>
         <form action="">
+          <label htmlFor="artistName" className="visuallyHidden">Enter Artist Name</label>
           <input
             onChange={this.props.handleChange}
             type="text"
@@ -14,6 +15,7 @@ class Search extends Component {
             placeholder="Enter Artist Name"
           />
           +
+          <label htmlFor="songTitle" className="visuallyHidden">Enter Song Title</label>
           <input
             onChange={this.props.handleChange}
             type="text"
@@ -22,8 +24,10 @@ class Search extends Component {
             value={this.props.songTitle}
             placeholder="Enter Song Title"
           />
+          <label htmlFor="submitButton" className="visuallyHidden">Click to Add Song</label>
           <button
             className="submitButton"
+            id="submitButton"
             onClick={this.props.handleSubmit}
             // disabled={this.props.artistName.length || this.props.songTitle.length == 0 ? "disabled": null}
             type="submit"

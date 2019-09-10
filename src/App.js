@@ -132,13 +132,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <Search
-          handleChange={this.handleChange}
-          artistName={this.state.artistName}
-          songTitle={this.state.songTitle}
-          handleSubmit={this.handleSubmit}
-        />
+        <div className="fixedTop">
+          <Header />
+          <Search
+            handleChange={this.handleChange}
+            artistName={this.state.artistName}
+            songTitle={this.state.songTitle}
+            handleSubmit={this.handleSubmit}
+          />
+        </div>
         <div className="cardContainer wrapper">
           <ul>
             {this.state.returnedLyrics.map((songs, i) => {
