@@ -96,7 +96,7 @@ class App extends Component {
   //when user submits the form, we are calling the function that triggers our API call
   handleSubmit = event => {
     event.preventDefault();
-    if (this.inputValidate() == true) {
+    if (this.inputValidate() === true) {
       alert("It appears you've submitted an empty field. Try again!");
     } else this.getLyrics();
     this.setState({

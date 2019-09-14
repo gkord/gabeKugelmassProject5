@@ -178,6 +178,7 @@ input::-moz-focus-inner {
 html {
   height: 100%;
   width: 100%;
+  font-size: 62.5%;
 }
 
 body {
@@ -209,11 +210,12 @@ p {
 h1 {
   text-align: center;
   font-family: "Courgette", sans-serif;
-  font-size: 48px;
+  font-size: 4.8rem;
   text-shadow: 2px 2px 5px #F0FFF0;
   margin: 25px 0;
   line-height: 1;
   text-transform: uppercase;
+  padding: 0px 5px;
 }
 
 h2 {
@@ -221,13 +223,13 @@ h2 {
   text-align: center;
   font-style: italic;
   font-family: 'Open Sans', sans-serif;
-  font-size: 28px;
+  font-size: 2.8rem;
 }
 
 h4 {
   text-transform: capitalize;
   margin: 0;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 form {
@@ -299,7 +301,7 @@ input {
 }
 
 i {
-  font-size: 20px;
+  font-size: 2.0rem;
 }
 
 ::placeholder {
@@ -339,7 +341,7 @@ footer p {
 }
 
 .modalBody p {
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 27.6px;
   font-family: 'Open Sans', sans-serif;
 }
@@ -362,9 +364,52 @@ footer p {
 .closeModalButton {
   color: black;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 3.0rem;
   margin: 0;
   position: fixed;
+}
+
+.closeModalButton:hover {
+  color: darkred;
+}
+
+@media(max-width: 768px) {
+
+  .submitButton {
+    transition: all 0.3s ease;
+  }
+
+  .submitButton:hover {
+    box-shadow: 2px 2px 5px black;
+  }
+
+  .submitButton:active {
+    background-color: darkred; 
+  }
+
+  .removeButton {
+    transition: all 0.3s ease;
+  }
+
+  .removeButton:hover {
+    color: black;
+  }
+
+  .removeButton:active {
+    color: darkred;
+  }
+
+  .openModalButton {
+    transition: all 0.3s ease;
+  }
+  .openModalButton:hover {
+    box-shadow: none;
+  }
+
+  .openModalButton:active {
+    background-color: darkred;
+  }
+  
 }
 
 @media (max-width:624px) {
@@ -380,7 +425,7 @@ footer p {
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 2.0rem;
   }
 
   input {
@@ -389,6 +434,6 @@ footer p {
   }
 
   h4{
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 }
