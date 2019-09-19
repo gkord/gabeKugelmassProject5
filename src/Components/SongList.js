@@ -23,7 +23,7 @@ const SongList = props => {
               id="removeButton"
               onClick={() => props.removeSong(props.songId)}
             >
-              <i className="fas fa-times-circle"></i>
+              <i className="fas fa-times-circle"><span className="visuallyHidden">Click to Remove Song</span></i>
             </button>
           </div>
         </div>
