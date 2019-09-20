@@ -6,6 +6,7 @@ import Search from "./Components/Search";
 import Modal from "./Components/Modal";
 import Footer from "./Components/Footer";
 import firebase from "./firebase";
+import Swal from "sweetalert2";
 import "./App.css";
 
 class App extends Component {
@@ -49,9 +50,12 @@ class App extends Component {
         );
       })
       .catch(error => {
-        alert(
-          "Hmm... no results. Lyrics either don't exist in our database or you spelled something wrong. Please try again!"
-        );
+        Swal.fire({
+          type: "error",
+          title: "Hmm...",
+          text:
+            "No results. Lyrics either don't exist in our database or you spelled something wrong. Please try again!"
+        });
       });
   };
 
@@ -97,7 +101,11 @@ class App extends Component {
   handleSubmit = event => {
     event.preventDefault();
     if (this.inputValidate() === true) {
-      alert("It appears you've submitted an empty field. Try again!");
+      Swal.fire({
+        type: "error",
+        title: "Oops...",
+        text: "It appears you've submitted an empty field. Try again!"
+      });
     } else this.getLyrics();
     this.setState({
       artistDisplay: this.state.artistName,

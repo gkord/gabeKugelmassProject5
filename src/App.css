@@ -317,14 +317,14 @@ footer p {
 /* Modal Styles */
 
 .modalWrapper {
-  background: white;
+  background: #F0FFF0;
   border: 1px solid #d0cccc;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
   transition: all 0.8s;
-  width: 80%;
+  width: 70%;
   position: absolute;
-  top: 0;
-  left: 10%;
+  top: 1%;
+  left: 15%;
 }
 
 .modalHeader {
@@ -373,6 +373,14 @@ footer p {
   color: darkred;
 }
 
+.swal2-title{
+  font-size: 3rem;
+}
+
+.swal2-content{
+  font-size: 1.6rem;
+}
+
 @media(max-width: 768px) {
 
   .submitButton {
@@ -414,8 +422,8 @@ footer p {
 
 @media (max-width:624px) {
   .modalWrapper {
-    width: 95%;
-    left: 2.5%;
+    width: 90%;
+    left: 5%;
   }
 }
 

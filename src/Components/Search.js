@@ -11,7 +11,7 @@ class Search extends Component {
             type="text"
             name="artistName"
             id="artistName"
-            value={this.props.artistName}
+            value={this.props.artistName.toLowerCase()}
             placeholder="Enter Artist Name"
           />
           +
@@ -21,7 +21,7 @@ class Search extends Component {
             type="text"
             name="songTitle"
             id="songTitle"
-            value={this.props.songTitle}
+            value={this.props.songTitle.toLowerCase()}
             placeholder="Enter Song Title"
           />
           <label htmlFor="submitButton" className="visuallyHidden">Click to Add Song</label>
