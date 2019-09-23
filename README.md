@@ -1,3 +1,7 @@
+Karaoke Companion is an app created in React that allows a user to create a custom songlist. The user inputs artist name and song title then the app makes a call to the lyrics.ovh API. The app then dynamically renders a list item where the user can access the lyrics to the song. The user can add and remove songs from the list at their leisure.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
