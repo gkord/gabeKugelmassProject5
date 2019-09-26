@@ -4,7 +4,7 @@ const SongList = props => {
   const first20 = props.songDisplay.replace(/(.{20})..+/, "$1...");
   return (
     <div>
-      <li className="w3-animate-left">
+      <li className="w3-animate-left songBox">
         <div className="lyricBoxTop">
           <h4>{props.artistDisplay}</h4>
           <h4>{props.songDisplay.length < 20 ? props.songDisplay : first20}</h4>

@@ -141,7 +141,8 @@ class App extends Component {
     return (
       <div className="App">
         <div className="fixedTop">
-          <Header />
+          <Header openModal={this.openModalHandler} isShowing = {this.state.isShowing}/>
+          {/* {this.state.isShowing && <Instructions />} */}
           <Search
             handleChange={this.handleChange}
             artistName={this.state.artistName}

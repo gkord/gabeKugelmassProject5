@@ -10,8 +10,6 @@ const Modal = props => {
           </span>
         </div>
         <div className="modalBody">
-          <h4>{props.artistDisplay}</h4>
-          <h4>{props.songDisplay}</h4>
           <p>{props.lyrics}</p>
         </div>
       </div>

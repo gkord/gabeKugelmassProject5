@@ -244,7 +244,7 @@ ul {
   list-style: none;
 }
 
-li {
+.songBox {
   height: 100%;
   width: 100%;
   margin: 10px 0px;
@@ -275,6 +275,10 @@ input {
   padding-bottom: 5px;
   text-align: center;
   background: transparent;
+}
+
+::-webkit-input-placeholder {
+  color: #EAEAEA;
 }
 
 .removeButton {
@@ -328,9 +332,11 @@ footer p {
   position: absolute;
   top: 1%;
   left: 15%;
+  z-index: 10;
 }
 
 .modalHeader {
+  background: #F0FFF0;
   height: 40px;
   line-height: 40px;
   padding: 5px 20px;
