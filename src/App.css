@@ -278,7 +278,8 @@ input {
 }
 
 ::-webkit-input-placeholder {
-  color: #EAEAEA;
+  color: black;
+  opacity: 0.6;
 }
 
 .removeButton {
