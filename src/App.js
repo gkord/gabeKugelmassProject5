@@ -27,7 +27,7 @@ class App extends Component {
     //Make API Call
     axios({
       method: "GET",
-      url: `https://private-anon-51f99dfb17-lyricsovh.apiary-proxy.com/v1/${this.state.artistName}/${this.state.songTitle}`,
+      url: `https://api.lyrics.ovh/v1/${this.state.artistName}/${this.state.songTitle}`,
       dataResponse: "json",
       params: {
         format: "json"
